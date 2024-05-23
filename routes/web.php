@@ -13,6 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+// |--------------------------------------------------------------------------
+//  HOME
+// |--------------------------------------------------------------------------
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
+
+// |--------------------------------------------------------------------------
+//  DATA DEI COMICS
+// |--------------------------------------------------------------------------
+Route::get('/comics', function () {
+    $comicsArray = config('comics');
+
+    $data = [
+        'comics' => $comicsArray
+    ];
+
+    return view('comics', $data);
+})->name('comics');
+
